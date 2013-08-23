@@ -4,7 +4,15 @@ describe "User pages" do
 
   subject { page }
 
-  describe "signup page should have correct content and title" do
+  describe "profile page" do
+    let(:user) { FactoryGirl.create(:user) }
+    before { visit user_path(user) }
+
+    it { should have_content(user.name) }
+    it { should have_title(user.name) }
+  end
+
+  describe "signup page" do
     before { visit signup_path }
 
     it { should have_content('Sign up') }
