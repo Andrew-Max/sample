@@ -64,6 +64,19 @@ describe "Authentication" do
             expect(page).to have_title('Edit user')
           end
         end
+
+        describe "in the Microposts controller" do
+
+          describe "submitting to the create action" do
+            before { post microposts_path }
+            specify { expect(response).to redirect_to(sign_in_path) }
+          end
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete micropost_path(FactoryGirl.create(:micropost)) }
+          specify { expect(response).to redirect_to(sign_in_path) }
+        end
       end
 
       describe "in the Users controller" do
