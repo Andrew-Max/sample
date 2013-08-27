@@ -22,6 +22,8 @@ def make_users
                  password: password,
                  password_confirmation: password)
   end
+
+  1.times do admin end
 end
 
 def make_microposts
